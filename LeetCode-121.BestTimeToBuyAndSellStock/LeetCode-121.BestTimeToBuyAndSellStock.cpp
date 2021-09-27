@@ -5,6 +5,7 @@ using namespace std;
 
 class Solution {
 
+    int price;
     int min = -1;
     int max = 0;
     int best = 0;
@@ -13,17 +14,19 @@ public:
     int maxProfit(vector<int>& prices) {
         for (int i = prices.size() - 1; i >= 0; --i)
         {
-            if (max < prices[i])
+            price = prices[i];
+
+            if (max < price)
             {
                 min = -1;
-                max = prices[i];
+                max = price;
 
                 continue;
             }
 
-            if (min > prices[i] || min == -1)
+            if (min > price || min == -1)
             {
-                min = prices[i];
+                min = price;
 
                 if (best < max - min)
                     best = max - min;
